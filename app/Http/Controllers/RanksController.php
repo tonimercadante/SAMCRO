@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRanksRequest;
 use App\Http\Requests\UpdateRanksRequest;
-use App\Models\Ranks;
+use App\Models\Rank;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -32,15 +34,28 @@ class RanksController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreRanksRequest $request)
+    public function store(Request $request): RedirectResponse
     {
         //
+        $request->validate([
+            'name' => 'required|string|max:50',
+            'description' => 'required|string|max:255',
+            'tag' => 'required|string|max:50',
+        ]);
+
+        $rank = Rank::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'tag' => $request->tag,
+        ]);
+
+        return redirect(route('ranks.index'));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Ranks $ranks)
+    public function show(Rank $ranks)
     {
         //
     }
@@ -48,7 +63,7 @@ class RanksController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Ranks $ranks)
+    public function edit(Rank $ranks)
     {
         //
     }
@@ -56,7 +71,7 @@ class RanksController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRanksRequest $request, Ranks $ranks)
+    public function update(UpdateRanksRequest $request, Rank $ranks)
     {
         //
     }
@@ -64,7 +79,7 @@ class RanksController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Ranks $ranks)
+    public function destroy(Rank $ranks)
     {
         //
     }

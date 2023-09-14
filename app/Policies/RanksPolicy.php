@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\Ranks;
+use App\Models\Rank;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
@@ -19,7 +19,7 @@ class RanksPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Ranks $ranks): bool
+    public function view(User $user, Rank $ranks): bool
     {
         //
     }
@@ -35,7 +35,7 @@ class RanksPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Ranks $ranks): bool
+    public function update(User $user, Rank $ranks): bool
     {
         //
     }
@@ -43,7 +43,7 @@ class RanksPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Ranks $ranks): bool
+    public function delete(User $user, Rank $ranks): bool
     {
         //
     }
@@ -51,7 +51,7 @@ class RanksPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Ranks $ranks): bool
+    public function restore(User $user, Rank $ranks): bool
     {
         //
     }
@@ -59,7 +59,7 @@ class RanksPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Ranks $ranks): bool
+    public function forceDelete(User $user, Rank $ranks): bool
     {
         //
     }
