@@ -4,6 +4,8 @@ import InputError from '@/Components/InputError.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { useForm, Head } from '@inertiajs/vue3';
 
+defineProps(['ranks']);
+
 const form = useForm({
     name: '',
     description: '',
@@ -34,5 +36,21 @@ const form = useForm({
                 <PrimaryButton class="mt-4">Ranks</PrimaryButton>
             </form>
         </div>
+
+        <h1>Ranks:</h1>
+        <table v-if="ranks.length > 0" class="min-w-full bg-white border border-gray-200">
+            <thead>
+                <tr>
+                    <th v-for="(value, key) in ranks[0]" :key="key"
+                        class="px-4 py-2 text-left font-semibold text-gray-700 border-b">{{ key }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item, index) in ranks" :key="index" class="transition-colors hover:bg-gray-100">
+                    <td v-for="(value, key) in item" :key="key" class="px-4 py-2 text-gray-600 border-b">{{ value }}</td>
+                </tr>
+            </tbody>
+        </table>
+
     </AuthenticatedLayout>
 </template>

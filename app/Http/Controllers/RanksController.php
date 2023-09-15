@@ -19,7 +19,7 @@ class RanksController extends Controller
     {
         //
         return Inertia::render('Ranks/Index', [
-            //
+            'ranks' => Rank::all()
         ]);
     }
 
