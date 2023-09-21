@@ -87,8 +87,10 @@ class RanksController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Rank $ranks)
+    public function destroy(Rank $rank): RedirectResponse
     {
-        //
+        $rank->delete();
+
+        return redirect(route('ranks.index'));
     }
 }

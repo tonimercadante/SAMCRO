@@ -37,6 +37,13 @@ function startEditing(item) {
     form.description = item.description;
     form.tag = item.tag;
 }
+function deleteRank(id) {
+    if (confirm("Are you sure you want to delete this rank?")) {
+        form.delete(route("ranks.destroy", { rank: id }), {
+            onSuccess: () => alert("Record deleted successfully."),
+        });
+    }
+}
 </script>
 
 <template>
@@ -108,7 +115,12 @@ function startEditing(item) {
                         {{ value }}
                     </td>
                     <td class="px-4 py-2 text-gray-600 border-b border-r">
-                        <button @click="startEditing(item)">Edit</button>
+                        <button @click="startEditing(item)" class="bg-blue-200">
+                            Edit
+                        </button>
+                        <button @click="deleteRank(item.id)" class="bg-red-200">
+                            Delete
+                        </button>
                     </td>
                 </tr>
             </tbody>
