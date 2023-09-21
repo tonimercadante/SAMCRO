@@ -71,9 +71,17 @@ class RanksController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRanksRequest $request, Rank $ranks)
+    public function update(Request $request, Rank $rank): RedirectResponse
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:50',
+            'description' => 'required|string|max:255',
+            'tag' => 'required|string|max:50',
+        ]);
+
+        $rank->update($validated);
+
+        return redirect(route('ranks.index'));
     }
 
     /**
